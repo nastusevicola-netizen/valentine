@@ -2,17 +2,78 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <title>Уляля❤️</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Приветствует Фронтенд Ольга❤️</title>
+
+        <style>
+            body{
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(135deg, #ffb6d5, #c7b3ff);
+                font-family: Arial, sans-serif; 
+            }
+
+            .card{
+                background: rgba(255, 255, 255, 0.85);
+                padding: 28px 22px;
+                border-radius: 22px;
+                text-align: center;
+                width: 320px;
+                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+                backdrop-filter: blur(6px);
+            }
+
+            h1{
+                margin: 0 0 16px;
+                font-size: 26px;
+            }
+
+            .buttons{
+                display: flex;
+                gap: 12px;
+                justify-content: center;
+            }
+
+            button{
+                border: none;
+                padding: 12px 22px;
+                border-radius: 999px;
+                background: #ff4d8d;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: transform 0.15s;
+            }
+
+            button:hover{
+                transform: scale(1.06);
+            }
+            
+        </style>
     </head>
+
     <body>
-        <h1>Ты меня любишь?🤩</h1>
+        <div class="card">
+        <h1 id="question">Ты меня любишь?🤩</h1>
+
+        <div class="buttons">
         <button onclick="sayYes()">Да 💖</button>
+        <button onclick="sayNo()">Нет 💔</button>
+        </div>
 
         <script>
             function sayYes() {
-                alert("Я тоже тебя люблю!💞");
+              document.getElementById("question").innerText =
+              "Я тоже тебя люблю💘"
+            }
+            function sayNo() {
+                document.getElementById("question").innerText =
+                "Упс, кнопка не доступна, повторите позже🥱"
             }
         </script>
-        
     </body>
 </html>
