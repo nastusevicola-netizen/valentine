@@ -15,6 +15,7 @@
                 align-items: center;
                 background: linear-gradient(135deg, #ffb6d5, #c7b3ff);
                 font-family: Arial, sans-serif; 
+                overflow: hidden;
             }
 
             .card{
@@ -22,9 +23,10 @@
                 padding: 28px 22px;
                 border-radius: 22px;
                 text-align: center;
-                width: 320px;
-                box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+                width: 420px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
                 backdrop-filter: blur(6px);
+                animation: cardAppear 0.6s ease-out;
             }
 
             h1{
@@ -52,6 +54,37 @@
             button:hover{
                 transform: scale(1.06);
             }
+
+            .emoji {
+                 position: fixed;
+                 z-index: 9999;
+                 pointer-events: none;
+                 font-size: 34px;
+                 animation: flyUp 2s ease-out forwards;
+            }
+
+            @keyframes flyUp {
+                from {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateY(-120px);
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cardAppear {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9) translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+                
+            }
             
         </style>
     </head>
@@ -66,14 +99,35 @@
         </div>
 
         <script>
+           function createEmoji(symbol) {
+            const emoji = document.createElement("div");
+            emoji.className = "emoji";
+            emoji.innerText = symbol;
+
+            emoji.style.left = Math.random() * window.innerWidth + "px";
+            emoji.style.top  = Math.random() * window.innerHeight + "px";
+
+            document.body.appendChild(emoji);
+
+            setTimeout (() => {
+                emoji.remove();
+            }, 2000);
+            }
+            
             function sayYes() {
-              document.getElementById("question").innerText =
-              "Я тоже тебя люблю💘"
+                document.getElementById("question").innerText = "Я тебя тоже люблю💋❤️";
+                for (let i = 0; i < 120; i++) {
+                    createEmoji("💜");
+                }
             }
+
             function sayNo() {
-                document.getElementById("question").innerText =
-                "Упс, кнопка не доступна, повторите позже🥱"
+                document.getElementById("question").innerText = "Упс...Кнопка временна недоступна, повторите позже!☔️";
+                for (let i = 0; i < 125; i++) {
+                    createEmoji("🔪");
+                }
             }
+             
         </script>
     </body>
 </html>
